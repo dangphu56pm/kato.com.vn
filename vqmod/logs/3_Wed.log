@@ -1,0 +1,277 @@
+---------- Date: 2016-09-14 00:53:12 ~ IP : 123.16.156.116 ----------
+REQUEST URI : /admin/index.php?route=catalog/category&amp;token=0fd30ed51d36e0a90b6693930740d535
+MOD DETAILS:
+   modFile   : /home/demo2/domains/demo.osdvn.com/public_html/vqmod/xml/osd.vn_extend_SEO.xml
+   id        : Extend for SEO 1.3
+   version   : 1.5.6.1
+   vqmver    : 2.1.7
+   author    : dungdo@osd.vn
+
+File Name    : admin/model/catalog/category.php(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): $this->db->query("INSERT INTO " . DB_PREFIX . "category_description SET category_id = '" . (int)$category_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', description = '" . $this->db->escape($value['description']) . "'");
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2016-09-14 00:54:24 ~ IP : 123.16.156.116 ----------
+REQUEST URI : /admin/index.php?route=catalog/product&amp;token=0fd30ed51d36e0a90b6693930740d535
+MOD DETAILS:
+   modFile   : /home/demo2/domains/demo.osdvn.com/public_html/vqmod/xml/osd.vn_extend_SEO.xml
+   id        : Extend for SEO 1.3
+   version   : 1.5.6.1
+   vqmver    : 2.1.7
+   author    : dungdo@osd.vn
+
+File Name    : admin/model/catalog/product.php(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): $this->db->query("INSERT INTO " . DB_PREFIX . "product_description SET product_id = '" . (int)$product_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "', short_description = '" . $this->db->escape($value['short_description']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', description = '" . $this->db->escape($value['description']) . "', tag = '" . $this->db->escape($value['tag']) . "'");
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2016-09-14 01:19:59 ~ IP : 123.16.156.116 ----------
+REQUEST URI : /admin/index.php?route=catalog/video&amp;token=df4cbeaa34c252d52343971d060bd241
+MOD DETAILS:
+   modFile   : /home/demo2/domains/demo.osdvn.com/public_html/vqmod/xml/allpagelayout.xml
+   id        : Alls Page Layout
+   version   : 1.6.4
+   vqmver    : 2.4.1
+   author    : osd.vn
+VQModObject::parseMods - Could not resolve path for [catalog/controller/common/slide.php] (SKIPPED)
+----------------------------------------------------------------------
+
+
+---------- Date: 2016-09-14 01:24:25 ~ IP : 123.16.156.116 ----------
+REQUEST URI : /admin/index.php?route=catalog/gallimage&amp;token=df4cbeaa34c252d52343971d060bd241
+MOD DETAILS:
+   modFile   : /home/demo2/domains/demo.osdvn.com/public_html/vqmod/xml/allpagelayout.xml
+   id        : Alls Page Layout
+   version   : 1.6.4
+   vqmver    : 2.4.1
+   author    : osd.vn
+VQModObject::parseMods - Could not resolve path for [catalog/controller/common/slide.php] (SKIPPED)
+----------------------------------------------------------------------
+
+
+---------- Date: 2016-09-14 01:25:19 ~ IP : 123.16.156.116 ----------
+REQUEST URI : /
+MOD DETAILS:
+   modFile   : /home/demo2/domains/demo.osdvn.com/public_html/vqmod/xml/admin_tuning.xml
+   id        : VQMOD CORE FOR OPENCART - DO NOT REMOVE
+   version   : 1.5.x and 1.6.x
+   vqmver    : 2.X
+   author    : osd.vn
+
+File Name    : catalog/model/catalog/product.php(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): $product_data = $this->cache->get('product.' . (int)$this->config->get('config_language_id') . '.' . (int)$this->config->get('config_store_id') . '.' . (int)$customer_group_id . '.' . $cache);
+
+MOD DETAILS:
+   modFile   : /home/demo2/domains/demo.osdvn.com/public_html/vqmod/xml/allpagelayout.xml
+   id        : Alls Page Layout
+   version   : 1.6.4
+   vqmver    : 2.4.1
+   author    : osd.vn
+
+File Name    : catalog/controller/common/content_top.php(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): if ($module['layout_id'] == $layout_id && $module['position'] == 'content_top' && $module['status'])
+----------------------------------------------------------------------
+
+
+---------- Date: 2016-09-14 01:46:53 ~ IP : 123.16.156.116 ----------
+REQUEST URI : /admin/index.php?route=common/filemanager&amp;token=df4cbeaa34c252d52343971d060bd241&amp;field=image0
+MOD DETAILS:
+   modFile   : /home/demo2/domains/demo.osdvn.com/public_html/vqmod/xml/admin_tuning.xml
+   id        : VQMOD CORE FOR OPENCART - DO NOT REMOVE
+   version   : 1.5.x and 1.6.x
+   vqmver    : 2.X
+   author    : osd.vn
+
+File Name    : admin/view/template/common/filemanager.tpl(10)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): height: 320px;
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2016-09-14 05:31:01 ~ IP : 123.16.156.116 ----------
+REQUEST URI : /admin/index.php?route=module/product_category&amp;token=7451bb078837455f96eb1d60ae9cf240
+MOD DETAILS:
+   modFile   : /home/demo2/domains/demo.osdvn.com/public_html/vqmod/xml/allpagelayout.xml
+   id        : Alls Page Layout
+   version   : 1.6.4
+   vqmver    : 2.4.1
+   author    : osd.vn
+VQModObject::parseMods - Could not resolve path for [catalog/controller/common/slide.php] (SKIPPED)
+MOD DETAILS:
+   modFile   : /home/demo2/domains/demo.osdvn.com/public_html/vqmod/xml/osd.vn_extend_SEO.xml
+   id        : Extend for SEO 1.3
+   version   : 1.5.6.1
+   vqmver    : 2.1.7
+   author    : dungdo@osd.vn
+
+File Name    : admin/model/catalog/category.php(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): $this->db->query("INSERT INTO " . DB_PREFIX . "category_description SET category_id = '" . (int)$category_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', description = '" . $this->db->escape($value['description']) . "'");
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2016-09-14 05:32:32 ~ IP : 123.16.156.116 ----------
+REQUEST URI : //
+MOD DETAILS:
+   modFile   : /home/demo2/domains/demo.osdvn.com/public_html/vqmod/xml/admin_tuning.xml
+   id        : VQMOD CORE FOR OPENCART - DO NOT REMOVE
+   version   : 1.5.x and 1.6.x
+   vqmver    : 2.X
+   author    : osd.vn
+
+File Name    : catalog/model/catalog/product.php(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): $product_data = $this->cache->get('product.' . (int)$this->config->get('config_language_id') . '.' . (int)$this->config->get('config_store_id') . '.' . (int)$customer_group_id . '.' . $cache);
+
+MOD DETAILS:
+   modFile   : /home/demo2/domains/demo.osdvn.com/public_html/vqmod/xml/allpagelayout.xml
+   id        : Alls Page Layout
+   version   : 1.6.4
+   vqmver    : 2.4.1
+   author    : osd.vn
+
+File Name    : catalog/controller/common/content_top.php(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): if ($module['layout_id'] == $layout_id && $module['position'] == 'content_top' && $module['status'])
+----------------------------------------------------------------------
+
+
+---------- Date: 2016-09-14 05:49:15 ~ IP : 123.16.156.116 ----------
+REQUEST URI : /admin/index.php?route=catalog/product&amp;token=27b84d8aaa9edcf600e9fcc846683362
+MOD DETAILS:
+   modFile   : /home/demo2/domains/demo.osdvn.com/public_html/vqmod/xml/osd.vn_extend_SEO.xml
+   id        : Extend for SEO 1.3
+   version   : 1.5.6.1
+   vqmver    : 2.1.7
+   author    : dungdo@osd.vn
+
+File Name    : admin/model/catalog/product.php(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): $this->db->query("INSERT INTO " . DB_PREFIX . "product_description SET product_id = '" . (int)$product_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "', short_description = '" . $this->db->escape($value['short_description']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', description = '" . $this->db->escape($value['description']) . "', tag = '" . $this->db->escape($value['tag']) . "'");
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2016-09-14 06:35:37 ~ IP : 123.16.156.116 ----------
+REQUEST URI : /admin/index.php?route=common/filemanager&amp;token=fff0e04067d3f8d06f8073d9ba9031f7&amp;field=image30
+MOD DETAILS:
+   modFile   : /home/demo2/domains/demo.osdvn.com/public_html/vqmod/xml/admin_tuning.xml
+   id        : VQMOD CORE FOR OPENCART - DO NOT REMOVE
+   version   : 1.5.x and 1.6.x
+   vqmver    : 2.X
+   author    : osd.vn
+
+File Name    : admin/view/template/common/filemanager.tpl(10)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): height: 320px;
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2016-09-14 06:57:54 ~ IP : 123.16.156.116 ----------
+REQUEST URI : //khoa-hoc
+MOD DETAILS:
+   modFile   : /home/demo2/domains/demo.osdvn.com/public_html/vqmod/xml/osd.vn_extend_SEO.xml
+   id        : Extend for SEO 1.3
+   version   : 1.5.6.1
+   vqmver    : 2.1.7
+   author    : dungdo@osd.vn
+
+File Name    : catalog/controller/product/category.php(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): $this->document->setTitle($category_info['name']);
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2016-09-14 08:20:58 ~ IP : 123.16.156.116 ----------
+REQUEST URI : //
+MOD DETAILS:
+   modFile   : /home/demo2/domains/demo.osdvn.com/public_html/vqmod/xml/admin_tuning.xml
+   id        : VQMOD CORE FOR OPENCART - DO NOT REMOVE
+   version   : 1.5.x and 1.6.x
+   vqmver    : 2.X
+   author    : osd.vn
+
+File Name    : catalog/model/catalog/product.php(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): $product_data = $this->cache->get('product.' . (int)$this->config->get('config_language_id') . '.' . (int)$this->config->get('config_store_id') . '.' . (int)$customer_group_id . '.' . $cache);
+
+MOD DETAILS:
+   modFile   : /home/demo2/domains/demo.osdvn.com/public_html/vqmod/xml/allpagelayout.xml
+   id        : Alls Page Layout
+   version   : 1.6.4
+   vqmver    : 2.4.1
+   author    : osd.vn
+
+File Name    : catalog/controller/common/content_top.php(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): if ($module['layout_id'] == $layout_id && $module['position'] == 'content_top' && $module['status'])
+----------------------------------------------------------------------
+
+
+---------- Date: 2016-09-14 08:21:37 ~ IP : 123.16.156.116 ----------
+REQUEST URI : //
+MOD DETAILS:
+   modFile   : /home/demo2/domains/demo.osdvn.com/public_html/vqmod/xml/admin_tuning.xml
+   id        : VQMOD CORE FOR OPENCART - DO NOT REMOVE
+   version   : 1.5.x and 1.6.x
+   vqmver    : 2.X
+   author    : osd.vn
+
+File Name    : catalog/model/catalog/product.php(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): $product_data = $this->cache->get('product.' . (int)$this->config->get('config_language_id') . '.' . (int)$this->config->get('config_store_id') . '.' . (int)$customer_group_id . '.' . $cache);
+
+MOD DETAILS:
+   modFile   : /home/demo2/domains/demo.osdvn.com/public_html/vqmod/xml/allpagelayout.xml
+   id        : Alls Page Layout
+   version   : 1.6.4
+   vqmver    : 2.4.1
+   author    : osd.vn
+
+File Name    : catalog/controller/common/content_top.php(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): if ($module['layout_id'] == $layout_id && $module['position'] == 'content_top' && $module['status'])
+----------------------------------------------------------------------
+
+
+---------- Date: 2016-09-14 08:53:29 ~ IP : 123.16.156.116 ----------
+REQUEST URI : /admin/index.php?route=catalog/category&amp;token=567923c16a5d9d8b8ad3b6113bdedbdc
+MOD DETAILS:
+   modFile   : /home/demo2/domains/demo.osdvn.com/public_html/vqmod/xml/osd.vn_extend_SEO.xml
+   id        : Extend for SEO 1.3
+   version   : 1.5.6.1
+   vqmver    : 2.1.7
+   author    : dungdo@osd.vn
+
+File Name    : admin/model/catalog/category.php(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): $this->db->query("INSERT INTO " . DB_PREFIX . "category_description SET category_id = '" . (int)$category_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', description = '" . $this->db->escape($value['description']) . "'");
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2016-09-14 08:54:01 ~ IP : 123.16.156.116 ----------
+REQUEST URI : /admin/index.php?route=common/filemanager&amp;token=567923c16a5d9d8b8ad3b6113bdedbdc&amp;field=image
+MOD DETAILS:
+   modFile   : /home/demo2/domains/demo.osdvn.com/public_html/vqmod/xml/admin_tuning.xml
+   id        : VQMOD CORE FOR OPENCART - DO NOT REMOVE
+   version   : 1.5.x and 1.6.x
+   vqmver    : 2.X
+   author    : osd.vn
+
+File Name    : admin/view/template/common/filemanager.tpl(10)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): height: 320px;
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2016-09-14 09:08:07 ~ IP : 123.16.156.116 ----------
+REQUEST URI : /khoa-hoc-nhat-trung-han
+MOD DETAILS:
+   modFile   : /home/demo2/domains/demo.osdvn.com/public_html/vqmod/xml/osd.vn_extend_SEO.xml
+   id        : Extend for SEO 1.3
+   version   : 1.5.6.1
+   vqmver    : 2.1.7
+   author    : dungdo@osd.vn
+
+File Name    : catalog/controller/product/category.php(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): $this->document->setTitle($category_info['name']);
+
+----------------------------------------------------------------------
+
+

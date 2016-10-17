@@ -1,0 +1,53 @@
+---------- Date: 2016-09-23 07:49:33 ~ IP : 123.16.156.116 ----------
+REQUEST URI : /
+MOD DETAILS:
+   modFile   : /home/wce/domains/wce.osdvn.com/public_html/vqmod/xml/admin_tuning.xml
+   id        : VQMOD CORE FOR OPENCART - DO NOT REMOVE
+   version   : 1.5.x and 1.6.x
+   vqmver    : 2.X
+   author    : osd.vn
+
+File Name    : catalog/model/catalog/product.php(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): $product_data = $this->cache->get('product.' . (int)$this->config->get('config_language_id') . '.' . (int)$this->config->get('config_store_id') . '.' . (int)$customer_group_id . '.' . $cache);
+
+MOD DETAILS:
+   modFile   : /home/wce/domains/wce.osdvn.com/public_html/vqmod/xml/allpagelayout.xml
+   id        : Alls Page Layout
+   version   : 1.6.4
+   vqmver    : 2.4.1
+   author    : osd.vn
+
+File Name    : catalog/controller/common/content_top.php(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): if ($module['layout_id'] == $layout_id && $module['position'] == 'content_top' && $module['status'])
+----------------------------------------------------------------------
+
+
+---------- Date: 2016-09-23 07:57:21 ~ IP : 123.16.156.116 ----------
+REQUEST URI : /tin-tuc
+MOD DETAILS:
+   modFile   : /home/wce/domains/wce.osdvn.com/public_html/vqmod/xml/allpagelayout.xml
+   id        : Alls Page Layout
+   version   : 1.6.4
+   vqmver    : 2.4.1
+   author    : osd.vn
+
+File Name    : catalog/controller/common/adv_top.php(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): if ($module['layout_id'] == $layout_id && $module['position'] == 'adv_top' && $module['status']) {
+----------------------------------------------------------------------
+
+
+---------- Date: 2016-09-23 09:17:09 ~ IP : 123.16.156.116 ----------
+REQUEST URI : /admin/index.php?route=catalog/category&amp;token=6b33e9df9cc2e4003eef70e773fb530f
+MOD DETAILS:
+   modFile   : /home/wce/domains/wce.osdvn.com/public_html/vqmod/xml/osd.vn_extend_SEO.xml
+   id        : Extend for SEO 1.3
+   version   : 1.5.6.1
+   vqmver    : 2.1.7
+   author    : dungdo@osd.vn
+
+File Name    : admin/model/catalog/category.php(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): $this->db->query("INSERT INTO " . DB_PREFIX . "category_description SET category_id = '" . (int)$category_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', description = '" . $this->db->escape($value['description']) . "'");
+
+----------------------------------------------------------------------
+
+

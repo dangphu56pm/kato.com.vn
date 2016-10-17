@@ -1,0 +1,26 @@
+<modification>
+	<id>Gallery Images</id>
+	<version>1.0.0</version>
+	<vqmver>2.4.1</vqmver>
+	<author>Mogi Megantara</author>	
+	<file name="admin/controller/common/header.php">
+		<operation>
+			<search position="after"><![CDATA[
+			$this->data['manufacturer'] = $this->url->link('catalog/manufacturer', 'token=' . $this->session->data['token'], 'SSL');
+			]]></search>
+			<add><![CDATA[
+			$this->data['gallimage'] = $this->url->link('catalog/gallimage', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['gallery_youtube'] = $this->url->link('catalog/video', 'token=' . $this->session->data['token'], 'SSL');
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/view/template/common/header.tpl">
+		<operation>
+			<search position="after"><![CDATA[<li><a href="<?php echo $news; ?>"><?php echo $text_news; ?></a></li>]]></search>
+			<add><![CDATA[
+			<li style="display:none"><a href="<?php echo $gallimage; ?>">Thư viện hình ảnh</a></li>
+			<li style="display:none"><a href="<?php echo $gallery_youtube; ?>">Thư viện video</a></li>
+			]]></add>
+		</operation>
+	</file>
+</modification>

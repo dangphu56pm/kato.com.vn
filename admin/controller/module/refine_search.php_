@@ -1,0 +1,397 @@
+<?php
+//-----------------------------------------------------
+// Filter Products Module for Opencart v1.5.X				
+// Modified by Huu Ha                          		
+// huuhath@gmail.com
+// Website: http://tutviet.net 
+// Version: 2.5  
+// Controller Admin                     		
+//-----------------------------------------------------
+
+//tạo lớp refine search kế thừa lớp Controller
+class ControllerModuleRefineSearch extends Controller {
+	// Khai báo các biến Private
+	private $error = array();
+	private $_name = 'refine_search';
+	private $_version = '1.5.6';
+	private $_revision = '2.5';
+
+	public function index() { 
+		// load ngôn ngữ
+		if ((substr(VERSION, 0, 5) == '1.5.5') || (substr(VERSION, 0, 5) == '1.5.6')) {
+			//từ  version 1.5.5 trở lên
+			$this->language->load('module/' . $this->_name);
+		} else {
+			//các version thấp hơn
+			$this->load->language('module/' . $this->_name);
+		}
+	
+		$this->data[$this->_name . '_version'] = $this->_version;
+		//Load Styles
+		$this->document->addStyle('view/stylesheet/refine_styles.css');
+		// Load javaScript 
+		$this->document->addScript('view/javascript/refine.js'); 
+
+		$this->document->setTitle($this->language->get('heading_title'));
+		
+		// Lấy và kiểm tra các giá trị trong form cài đặt Module nếu thỏa mãn thì edit giá trị cài đặt
+		$this->load->model('setting/setting');
+		if (($this->request->server['REQUEST_METHOD'] == 'POST')  && ($this->validate())) {
+			
+			// Nếu thỏa mãn tiến hành cài đặt vào bảng  setting
+			$this->model_setting_setting->editSetting($this->_name, $this->request->post);
+			// Thông báo cài đặt thành công
+			$this->session->data['success'] = $this->language->get('text_success');
+			if ($this->request->post['action'] == 'apply') {
+				$this->redirect($this->url->link('module/refine_search', 'token=' . $this->session->data['token'], 'SSL'));
+			} else {
+				$this->redirect($this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL'));
+			}
+		}
+	
+		$this->getModule();
+	}
+	
+
+	// Lấy các giá trị cài đặt module
+	private function getModule() { 
+		// Load ngon ngu
+		if ((substr(VERSION, 0, 5) == '1.5.5') || (substr(VERSION, 0, 5) == '1.5.6')) {
+			$this->language->load('module/' . $this->_name);
+		} else {
+			$this->load->language('module/' . $this->_name);
+		}
+		$this->data['heading_title'] = $this->language->get('heading_title');
+
+		$this->data['text_enabled'] = $this->language->get('text_enabled');
+		$this->data['text_disabled'] = $this->language->get('text_disabled');
+		$this->data['text_column_left'] = $this->language->get('text_column_left');
+		$this->data['text_column_right'] = $this->language->get('text_column_right');
+		$this->data['text_global_config'] = $this->language->get('text_global_config');
+		$this->data['text_select_attr'] = $this->language->get('text_select_attr');
+		$this->data['text_select_option'] = $this->language->get('text_select_option');
+		$this->data['text_des_option'] = $this->language->get('text_des_option');
+		$this->data['text_des_attr'] = $this->language->get('text_des_attr');
+		$this->data['text_price'] = $this->language->get('text_select_price');
+		$this->data['text_from'] = $this->language->get('text_from');
+		$this->data['text_to'] = $this->language->get('text_to');
+		$this->data['text_attr'] = $this->language->get('text_attr');
+		$this->data['text_op'] = $this->language->get('text_op');
+		$this->data['text_cat'] = $this->language->get('text_cat');
+		$this->data['text_brand'] = $this->language->get('text_brand');
+		$this->data['text_size'] = $this->language->get('text_size');
+		$this->data['text_price'] = $this->language->get('text_price');
+		$this->data['text_help_op'] = $this->language->get('text_help_op');
+		$this->data['text_cus_title'] = $this->language->get('text_cus_title');
+		
+		$this->data['entry_display'] = $this->language->get('entry_display');
+		$this->data['entry_title'] = $this->language->get('entry_customtitle');
+		$this->data['entry_layout'] = $this->language->get('entry_layout');
+		$this->data['entry_position'] = $this->language->get('entry_position');
+		$this->data['entry_options'] = $this->language->get('entry_options');
+		$this->data['entry_status'] = $this->language->get('entry_status');
+		$this->data['entry_sort_order'] = $this->language->get('entry_sort_order');
+		$this->data['entry_step'] = $this->language->get('entry_step');
+	        
+		$this->data['button_save'] = $this->language->get('button_save');
+		$this->data['button_cancel'] = $this->language->get('button_cancel');
+		$this->data['button_add_module'] = $this->language->get('button_add_module');
+		$this->data['button_remove'] = $this->language->get('button_remove');
+		$this->data['button_apply'] = $this->language->get('button_apply');
+		if (isset($this->session->data['success'])) {
+			$this->data['success'] = $this->session->data['success'];
+
+			unset($this->session->data['success']);
+		} else {
+			$this->data['success'] = '';
+		}
+		if (isset($this->error['warning'])) {
+			$this->data['error_warning'] = $this->error['warning'];
+		} else {
+			$this->data['error_warning'] = '';
+		}
+		if (isset($this->error['permission'])) {
+			$this->data['error_warning'][] = $this->error['permission'];
+		}
+
+		if (isset($this->error['error_price_min'])) {
+			$this->data['error_warning'][] = $this->error['error_price_min'];
+		}
+		
+		if (isset($this->error['select_att'])) {
+			$this->data['error_warning'][] = $this->error['select_att'];
+		}
+
+		if (isset($this->error['custom_category'])) {
+			$this->data['error_warning'][] = $this->error['custom_category'];
+		}
+
+		if (isset($this->error['select_op'])) {
+			$this->data['error_warning'][] = $this->error['select_op'];
+		}
+		// Breadcrumbs	
+		$this->data['breadcrumbs'] = array();
+	
+		$this->data['breadcrumbs'][] = array(
+       		'text'      => $this->language->get('text_home'),
+			'href'      => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL'),
+      		'separator' => false
+   		);
+	
+   		$this->data['breadcrumbs'][] = array(
+       		'text'      => $this->language->get('text_module'),
+			'href'      => $this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL'),
+      		'separator' => ' :: '
+   		);
+	
+		$this->data['breadcrumbs'][] = array(
+       		'text'      => $this->language->get('heading_title'),
+			'href'      => $this->url->link('module/' . $this->_name, 'token=' . $this->session->data['token'], 'SSL'),
+      		'separator' => ' :: '
+   		);
+	
+		$this->data['news'] = $this->url->link('module/news/listing', 'token=' . $this->session->data['token'], 'SSL');
+	
+		$this->data['action'] = $this->url->link('module/' . $this->_name, 'token=' . $this->session->data['token'], 'SSL');
+	
+		$this->data['cancel'] = $this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL');
+		
+		// Template
+		$this->data['templates'] = array();
+	
+		$directories = glob(DIR_CATALOG . 'view/theme/*', GLOB_ONLYDIR);
+	
+		foreach ($directories as $directory) {
+			$this->data['templates'][] = basename($directory);
+		}
+	
+		if (isset($this->request->post['config_template'])) {
+			$this->data['config_template'] = $this->request->post['config_template'];
+		} else {
+			$this->data['config_template'] = $this->config->get('config_template');			
+		}
+
+		// Categories 
+		if (isset($this->request->post['only_sub_cate'])) {
+			$this->data['only_sub_cate'] = $this->request->post['only_sub_cate'];
+		}else{ 
+			$this->data['only_sub_cate'] = $this->config->get('only_sub_cate');			
+		} 
+		if (isset($this->request->post['cat_status'])) {
+			$this->data['cat_status'] = $this->request->post['cat_status'];
+		}else{ 
+			$this->data['cat_status'] = $this->config->get('cat_status');			
+		} 
+		if (isset($this->request->post['cat_expand'])) {
+			$this->data['cat_expand'] = $this->request->post['cat_expand'];
+		} else{
+			$this->data['cat_expand'] = $this->config->get('cat_expand');			
+		}
+		if (isset($this->request->post['hide_cate_empty'])) {
+			$this->data['hide_cate_empty'] = $this->request->post['hide_cate_empty'];
+		} else{
+			$this->data['hide_cate_empty'] = $this->config->get('hide_cate_empty');			
+		}
+
+
+		// Brands Status
+		if (isset($this->request->post['brand_status'])) {
+			$this->data['brand_status'] = $this->request->post['brand_status'];
+		} else{
+			$this->data['brand_status'] = $this->config->get('brand_status');			
+		} 
+		if (isset($this->request->post['brand_expand'])) {
+			$this->data['brand_expand'] = $this->request->post['brand_expand'];
+		} else{
+			$this->data['brand_expand'] = $this->config->get('brand_expand');			
+		}
+
+
+		// Atribute status
+		if (isset($this->request->post['attr_status'])) {
+			$this->data['attr_status'] = $this->request->post['attr_status'];
+		} else {
+			$this->data['attr_status'] = $this->config->get('attr_status');			
+		}
+		if (isset($this->request->post['attr_expand'])) {
+			$this->data['attr_expand'] = $this->request->post['attr_expand'];
+		} else{
+			$this->data['attr_expand'] = $this->config->get('attr_expand');			
+		}
+		if (isset($this->request->post['hide_attr_empty'])) {
+			$this->data['hide_attr_empty'] = $this->request->post['hide_attr_empty'];
+		} else{
+			$this->data['hide_attr_empty'] = $this->config->get('hide_attr_empty');			
+		}
+
+
+		// Options Status
+		if (isset($this->request->post['op_status'])) {
+			$this->data['op_status'] = $this->request->post['op_status'];
+		} else {
+			$this->data['op_status'] = $this->config->get('op_status');			
+		}
+		if (isset($this->request->post['op_display'])) {
+			$this->data['op_display'] = $this->request->post['op_display'];
+		} else {
+			$this->data['op_display'] = $this->config->get('op_display');			
+		}
+		if (isset($this->request->post['op_expand'])) {
+			$this->data['op_expand'] = $this->request->post['op_expand'];
+		} else {
+			$this->data['op_expand'] = $this->config->get('op_expand');			
+		}
+		if (isset($this->request->post['hide_op_empty'])) {
+			$this->data['hide_op_empty'] = $this->request->post['hide_op_empty'];
+		} else{
+			$this->data['hide_op_empty'] = $this->config->get('hide_op_empty');			
+		}
+
+
+		// Size Status 
+		if (isset($this->request->post['size_status'])) {
+			$this->data['size_status'] = $this->request->post['size_status'];
+		} else {
+			$this->data['size_status'] = $this->config->get('size_status');			
+		}
+
+
+		// Price Status
+		if (isset($this->request->post['price_status'])) {
+			$this->data['price_status'] = $this->request->post['price_status'];
+		} else {
+			$this->data['price_status'] = $this->config->get('price_status');			
+		}
+
+
+		// Module
+		$this->load->model('localisation/language');
+	
+		$languages = $this->model_localisation_language->getLanguages();
+	
+		foreach ($languages as $language) {
+			if (isset($this->request->post[$this->_name . '_title' . $language['language_id']])) {
+				$this->data[$this->_name . '_title' . $language['language_id']] = $this->request->post[$this->_name . '_title' . $language['language_id']];
+			} else {
+				$this->data[$this->_name . '_title' . $language['language_id']] = $this->config->get($this->_name . '_title' . $language['language_id']);
+			}
+		}
+	
+		$this->data['languages'] = $languages;
+
+		// Get attribute group 
+		$this->data['attr_select'] = array();
+		if (isset($this->request->post[$this->_name . '_attr'])) {
+			$this->data['attr_select'] = $this->request->post[$this->_name . '_attr'];
+		} elseif ($this->config->get($this->_name . '_attr')) { 
+			$this->data['attr_select'] = $this->config->get($this->_name . '_attr');
+		}
+		$this->load->model('catalog/attribute_group');
+		$listAttr = $this->model_catalog_attribute_group->getAttributeGroups();
+		$this->data['listAttrGroup'] = $listAttr;		
+		//echo '<pre>';print_r($listAttr);
+		
+		// Get Options
+		$this->data['option_select'] = array();
+		if (isset($this->request->post[$this->_name . '_option'])) {
+			$this->data['option_select'] = $this->request->post[$this->_name . '_option'];
+		} elseif ($this->config->get($this->_name . '_option')) { 
+			$this->data['option_select'] = $this->config->get($this->_name . '_option');
+		}
+		$this->load->model('catalog/option');
+		$listOption = $this->model_catalog_option->getOptions();
+		foreach($listOption as $option){
+			if($option['type'] == 'select'){
+				$this->data['listOption'][] = array(
+											'id' => $option['option_id'],
+											'name' => $option['name']	
+				);	
+			}
+		}
+		
+		//Price
+		if (isset($this->request->post[$this->_name . '_min'])) {
+			$this->data['min'] = $this->request->post[$this->_name . '_min'];
+		} elseif ($this->config->get($this->_name . '_min')) { 
+			$this->data['min'] = $this->config->get($this->_name . '_min');
+		}else{
+			$this->data['min'] = 1;
+		}
+		if (isset($this->request->post[$this->_name . '_step'])) {
+			$this->data['step'] = $this->request->post[$this->_name . '_step'];
+		} elseif ($this->config->get($this->_name . '_step')) { 
+			$this->data['step'] = $this->config->get($this->_name . '_step');
+		}else{
+			$this->data['step'] = 5;
+		}
+		if (isset($this->request->post[$this->_name . '_max'])) {
+			$this->data['max'] = $this->request->post[$this->_name . '_max'];
+		} elseif ($this->config->get($this->_name . '_max')) { 
+			$this->data['max'] = $this->config->get($this->_name . '_max');
+		}else{
+			$this->data['max'] = 500;
+		}
+
+		$this->data['modules'] = array();
+	
+		if (isset($this->request->post[$this->_name . '_module'])) {
+			$this->data['modules'] = $this->request->post[$this->_name . '_module'];
+		} elseif ($this->config->get($this->_name . '_module')) { 
+			$this->data['modules'] = $this->config->get($this->_name . '_module');
+		}
+
+		$this->load->model('design/layout');
+	
+		$this->data['layouts'] = $this->model_design_layout->getLayouts();
+	
+		$this->template = 'module/refine_search.tpl';
+		$this->children = array(
+			'common/header',
+			'common/footer'
+		);
+	
+		$this->response->setOutput($this->render());
+	}
+
+	// Hàm kiểm tra các giá trị nhập vào
+	private function validate() {
+//		echo '<pre>';
+//		var_dump($this->request->post);
+//		die;
+		// Kiểm tra phân  quyền
+		if (!$this->user->hasPermission('modify', 'module/refine_search')) {
+			$this->error['permmissin'] = $this->language->get('error_permission');
+		}
+		if (isset($this->request->post['op_status']) && empty($this->request->post['refine_search_option'])) {
+			$this->error['select_op'] = $this->language->get('entry_select_op');
+		}
+		if (isset($this->request->post['price_status']) && $this->request->post['refine_search_min'] < 1) {
+			$this->error['error_price_min'] = $this->language->get('entry_price_min');
+		}
+		if (isset($this->request->post['attr_status']) && empty($this->request->post['refine_search_attr'])) {
+			$this->error['select_att'] = $this->language->get('entry_select_attr');
+		}
+		
+		if (!$this->error) {
+			return TRUE;
+		} else {
+			return FALSE;
+		}
+	}
+	
+	public function install(){
+		//ALTER TABLE  `os_product` CHANGE  `weight`  `weight` DECIMAL( 15, 1 ) NOT NULL DEFAULT  '0.00000000'
+		$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'refined_search', keyword = 'refined_search'");
+		$this->db->query("INSERT INTO " . DB_PREFIX . "layout SET name = 'Results'");
+		$layout_id = $this->db->getLastId();
+		$this->db->query("INSERT INTO " . DB_PREFIX . "layout_route SET store_id = '0', route = 'product/results', layout_id = '".$layout_id."'");
+	}
+	
+	public function uninstall(){
+		$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE `query` LIKE 'refined_search'");
+		$this->db->query("DELETE FROM " . DB_PREFIX . "layout WHERE `name` LIKE 'Results'");
+		$this->db->query("DELETE FROM " . DB_PREFIX . "layout_route WHERE `route` LIKE 'product/results'");
+	}
+
+}
+?>

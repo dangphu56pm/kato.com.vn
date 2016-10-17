@@ -1,0 +1,198 @@
+---------- Date: 2016-03-06 03:30:56 ~ IP : 192.168.100.6 ----------
+REQUEST URI : /simplecms/admin/
+MOD DETAILS:
+   modFile   : C:\xampp\htdocs\simplecms\vqmod/xml/allpagelayout.xml
+   id        : Alls Page Layout
+   version   : 1.6.4
+   vqmver    : 2.4.1
+   author    : saosangmo
+VQModObject::parseMods - Could not resolve path for [catalog/controller/common/slide.php] (SKIPPED)
+MOD DETAILS:
+   modFile   : C:\xampp\htdocs\simplecms\vqmod/xml/google_remarketing.xml
+   id        : Google Conversion and Remarketing code parameters can be editable in root config.php
+   version   : 1.5.x
+   vqmver    : 2.0.1
+   author    : https://www.renovatiomarketing.hu (Richard)
+VQModObject::parseMods - Could not resolve path for [catalog/model/checkout/order.php] (SKIPPED)
+----------------------------------------------------------------------
+
+
+---------- Date: 2016-03-06 03:30:57 ~ IP : 192.168.100.6 ----------
+REQUEST URI : /simplecms/
+MOD DETAILS:
+   modFile   : C:\xampp\htdocs\simplecms\vqmod/xml/ajax-enable-disable-categories-product.xml
+   id        : Display Categories status and Enable/Disable without edit.
+   version   : 1.5.X
+   vqmver    : 2.4.0
+   author    : oc_developer@outlook.com
+
+File Name    : catalog/model/catalog/product.php(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): $product_data = $this->cache->get('product.' . (int)$this->config->get('config_language_id') . '.' . (int)$this->config->get('config_store_id') . '.' . (int)$customer_group_id . '.' . $cache);
+
+MOD DETAILS:
+   modFile   : C:\xampp\htdocs\simplecms\vqmod/xml/allpagelayout.xml
+   id        : Alls Page Layout
+   version   : 1.6.4
+   vqmver    : 2.4.1
+   author    : saosangmo
+
+File Name    : catalog/controller/common/content_top.php(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): if ($module['layout_id'] == $layout_id && $module['position'] == 'content_top' && $module['status'])
+MOD DETAILS:
+   modFile   : C:\xampp\htdocs\simplecms\vqmod/xml/ajax-enable-disable-news.xml
+   id        : abc
+   version   : 1.5.X
+   vqmver    : 2.4.0
+   author    : osd
+
+File Name    : catalog/model/catalog/news.php(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): $news_data = $this->cache->get('news.' . (int)$this->config->get('config_language_id') . '.' . (int)$this->config->get('config_store_id') . '.' . (int)$customer_group_id . '.' . $cache);
+----------------------------------------------------------------------
+
+
+---------- Date: 2016-03-06 03:31:38 ~ IP : 192.168.100.6 ----------
+REQUEST URI : /simplecms/sua-chua-tivi-lcd-tai-nha.html
+MOD DETAILS:
+   modFile   : C:\xampp\htdocs\simplecms\vqmod/xml/osd.vn_extend_SEO.xml
+   id        : Extend for SEO 1.3
+   version   : 1.5.6.1
+   vqmver    : 2.1.7
+   author    : dungdo@osd.vn
+
+File Name    : catalog/controller/product/product.php(1)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): public function upload() {
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2016-03-06 03:58:18 ~ IP : 192.168.100.6 ----------
+REQUEST URI : /simplecms/admin/index.php?route=catalog/product&amp;token=8aaf73fab934bc668d6b1fe6f276c833
+MOD DETAILS:
+   modFile   : C:\xampp\htdocs\simplecms\vqmod/xml/SEO.xml
+   id        : SEO CUSTOM TITLE
+   version   : 1.5
+   vqmver    : 2.4.1
+   author    : Umang Amin
+
+File Name    : admin/model/catalog/product.php(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): $this->db->query("INSERT INTO " . DB_PREFIX . "product_description SET product_id = '" . (int)$product_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "', short_description = '" . $this->db->escape($value['short_description']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', description = '" . $this->db->escape($value['description']) . "', tag = '" . $this->db->escape($value['tag']) . "'");
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2016-03-06 03:58:31 ~ IP : 192.168.100.6 ----------
+REQUEST URI : /simplecms/admin/index.php?route=catalog/product/insert&amp;token=8aaf73fab934bc668d6b1fe6f276c833
+MOD DETAILS:
+   modFile   : C:\xampp\htdocs\simplecms\vqmod/xml/SEO.xml
+   id        : SEO CUSTOM TITLE
+   version   : 1.5
+   vqmver    : 2.4.1
+   author    : Umang Amin
+
+File Name    : admin/model/catalog/category.php(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): $this->db->query("INSERT INTO " . DB_PREFIX . "category_description SET category_id = '" . (int)$category_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', description = '" . $this->db->escape($value['description']) . "'");
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2016-03-06 04:45:36 ~ IP : ::1 ----------
+REQUEST URI : /simplecms/
+MOD DETAILS:
+   modFile   : C:\xampp\htdocs\simplecms\vqmod/xml/allpagelayout.xml
+   id        : Alls Page Layout
+   version   : 1.6.4
+   vqmver    : 2.4.1
+   author    : saosangmo
+VQModObject::parseMods - Could not resolve path for [catalog/controller/common/slide.php] (SKIPPED)
+
+File Name    : catalog/controller/common/content_top.php(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): if ($module['layout_id'] == $layout_id && $module['position'] == 'content_top' && $module['status'])
+MOD DETAILS:
+   modFile   : C:\xampp\htdocs\simplecms\vqmod/xml/google_remarketing.xml
+   id        : Google Conversion and Remarketing code parameters can be editable in root config.php
+   version   : 1.5.x
+   vqmver    : 2.0.1
+   author    : https://www.renovatiomarketing.hu (Richard)
+VQModObject::parseMods - Could not resolve path for [catalog/model/checkout/order.php] (SKIPPED)
+MOD DETAILS:
+   modFile   : C:\xampp\htdocs\simplecms\vqmod/xml/ajax-enable-disable-categories-product.xml
+   id        : Display Categories status and Enable/Disable without edit.
+   version   : 1.5.X
+   vqmver    : 2.4.0
+   author    : oc_developer@outlook.com
+
+File Name    : catalog/model/catalog/product.php(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): $product_data = $this->cache->get('product.' . (int)$this->config->get('config_language_id') . '.' . (int)$this->config->get('config_store_id') . '.' . (int)$customer_group_id . '.' . $cache);
+
+MOD DETAILS:
+   modFile   : C:\xampp\htdocs\simplecms\vqmod/xml/ajax-enable-disable-news.xml
+   id        : abc
+   version   : 1.5.X
+   vqmver    : 2.4.0
+   author    : osd
+
+File Name    : catalog/model/catalog/news.php(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): $news_data = $this->cache->get('news.' . (int)$this->config->get('config_language_id') . '.' . (int)$this->config->get('config_store_id') . '.' . (int)$customer_group_id . '.' . $cache);
+----------------------------------------------------------------------
+
+
+---------- Date: 2016-03-06 04:45:45 ~ IP : ::1 ----------
+REQUEST URI : /simplecms/sua-may-giat-tai-nha-khu-vuc-ha-noi.html
+MOD DETAILS:
+   modFile   : C:\xampp\htdocs\simplecms\vqmod/xml/osd.vn_extend_SEO.xml
+   id        : Extend for SEO 1.3
+   version   : 1.5.6.1
+   vqmver    : 2.1.7
+   author    : dungdo@osd.vn
+
+File Name    : catalog/controller/product/product.php(1)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): public function upload() {
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2016-03-06 07:36:37 ~ IP : ::1 ----------
+REQUEST URI : /simplecms/sua-may-giat-tai-nha-khu-vuc-ha-noi.html
+MOD DETAILS:
+   modFile   : C:\xampp\htdocs\simplecms\vqmod/xml/osd.vn_extend_SEO.xml
+   id        : Extend for SEO 1.3
+   version   : 1.5.6.1
+   vqmver    : 2.1.7
+   author    : dungdo@osd.vn
+
+File Name    : catalog/controller/product/product.php(1)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): public function upload() {
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2016-03-06 07:37:24 ~ IP : ::1 ----------
+REQUEST URI : /simplecms/admin/index.php?route=catalog/product/update&amp;token=b3ccb76ea4a86897dc8a17ff2c8b9282&amp;product_id=44
+MOD DETAILS:
+   modFile   : C:\xampp\htdocs\simplecms\vqmod/xml/SEO.xml
+   id        : SEO CUSTOM TITLE
+   version   : 1.5
+   vqmver    : 2.4.1
+   author    : Umang Amin
+
+File Name    : admin/model/catalog/product.php(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): $this->db->query("INSERT INTO " . DB_PREFIX . "product_description SET product_id = '" . (int)$product_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "', short_description = '" . $this->db->escape($value['short_description']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', description = '" . $this->db->escape($value['description']) . "', tag = '" . $this->db->escape($value['tag']) . "'");
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2016-03-06 08:09:52 ~ IP : ::1 ----------
+REQUEST URI : /simplecms/admin/index.php?route=catalog/product&amp;token=b3ccb76ea4a86897dc8a17ff2c8b9282
+MOD DETAILS:
+   modFile   : C:\xampp\htdocs\simplecms\vqmod/xml/SEO.xml
+   id        : SEO CUSTOM TITLE
+   version   : 1.5
+   vqmver    : 2.4.1
+   author    : Umang Amin
+
+File Name    : admin/model/catalog/product.php(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): $this->db->query("INSERT INTO " . DB_PREFIX . "product_description SET product_id = '" . (int)$product_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "', short_description = '" . $this->db->escape($value['short_description']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', description = '" . $this->db->escape($value['description']) . "', tag = '" . $this->db->escape($value['tag']) . "'");
+
+----------------------------------------------------------------------
+
+

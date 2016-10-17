@@ -1,0 +1,24 @@
+---------- Date: 2016-10-17 17:19:15 ~ IP : ::1 ----------
+REQUEST URI : /kato.com.vn/
+MOD DETAILS:
+   modFile   : C:\xampp\htdocs\kato.com.vn\vqmod/xml/admin_tuning.xml
+   id        : VQMOD CORE FOR OPENCART - DO NOT REMOVE
+   version   : 1.5.x and 1.6.x
+   vqmver    : 2.X
+   author    : osd.vn
+
+File Name    : catalog/model/catalog/product.php(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): $product_data = $this->cache->get('product.' . (int)$this->config->get('config_language_id') . '.' . (int)$this->config->get('config_store_id') . '.' . (int)$customer_group_id . '.' . $cache);
+
+MOD DETAILS:
+   modFile   : C:\xampp\htdocs\kato.com.vn\vqmod/xml/allpagelayout.xml
+   id        : Alls Page Layout
+   version   : 1.6.4
+   vqmver    : 2.4.1
+   author    : osd.vn
+
+File Name    : catalog/controller/common/content_top.php(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): if ($module['layout_id'] == $layout_id && $module['position'] == 'content_top' && $module['status'])
+----------------------------------------------------------------------
+
+

@@ -1,0 +1,392 @@
+#leftdiv{
+          float:left;
+          width:18%;
+          }
+/*  ---- menu---- */
+#kigallery_admin_menu{
+                  margin-left:5px;
+                  margin-top:5px;
+                  padding:8px;
+                  background:url(../image/menu-back.png);
+                  width:210px;
+                  border: solid 3px silver;
+                  text-align:left;
+}
+#kigallery_admin_menu a{
+                  display:block;
+                  padding:3px;
+                  font-weight:bold;
+                  font-size:15px;
+                  background: none;
+                  margin-left:0px;
+                  border: none;
+} 
+#kigallery_admin_menu .folders  a{
+                  display:inline;
+}
+.content{
+                  height:auto;
+}
+
+#gallery_images{
+          float:right;
+          width:80%;
+}
+/*  ---- line/kigallery/image ---*/
+.admin-comment{
+                  margin-top:10px;
+                  width:95%;
+                  height:200px;
+                  float:left;
+}     
+#tab-general{
+                  height:500px;
+                  width:99%;
+}
+   
+a.vcomm-edit{
+	text-decoration: none;
+	color: #FFF;
+	padding: 5px 15px 5px 15px;
+	background: #003A88;
+           margin-left:8px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-khtml-border-radius: 10px 10px 10px 10px;
+	border-radius: 10px 10px 10px 10px;
+          float:right;
+}     
+a.vcomm-delete{
+	text-decoration: none;
+	color: #FFF;
+	padding: 5px 15px 5px 15px;
+	background: #003A88;
+           margin-left:8px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-khtml-border-radius: 10px 10px 10px 10px;
+	border-radius: 10px 10px 10px 10px;
+          float:right;
+}                   
+.image-left{
+                  vertical-align:top;
+                  width:66%;
+                  height:250px;
+                  float:left;
+}   
+.image-right{
+                  vertical-align:top;
+                  width:30%;
+                  text-align:center;
+                 float:right; 
+} 
+.exif-data{
+                  margin-left:40px;
+                  font-size:16px;
+}                  
+.text-image-top{
+                  float:right;
+                  margin-right:10%;
+                  margin-top:-160px;
+}           
+.text-image-top h4{
+                  font-size:15px;
+}       
+.image-info{
+                  margin-top:10px;
+}
+
+.image-info td{
+                  padding-left:5px;
+                  font-size:15px;
+} 
+   
+.changes-box{
+                  width:530px;
+                  vertical-align:top;
+}  
+
+.change-field{
+                  font-size:14px;
+                  margin-left:50px;
+                  margin-top:20px;
+                  padding:20px;
+                  background:#eee;
+                  width:500px;
+                  height:60px;
+                  border:#000 solid 1px;
+}       
+.cleft{
+                  width:80px;
+                  float:left;
+}
+.cright{
+                  width:80px;
+                  float:right;
+                  margin-right:40px;
+}
+
+.comment-title{
+                  font-weight:bold;
+                  font-size:17px;
+                  width:99%;
+                  background:#eee;
+                  padding:3px;
+                  margin-bottom:10px;
+}                  
+.vcomment{
+                  font-size:16px;
+                  margin:00px 0px 5px 0px; 
+                  padding:4px; 
+                  width:99%;
+                  text-align:left;
+                  line-height:30px;
+}  
+.vcomment a{
+                  font-size:12px;
+                  line-height:15px;
+                  margin-top:-26px;
+}
+.vcomment-headdata{
+                  line-height:30px;
+                  font-size:12px;
+                  width:99%;
+}  
+.vcomment-headdata a{
+                  line-height:14px;
+}
+.vcomment-headdata span{
+                    padding-left:0px; 
+                    margin-bottom:10px;
+}
+.text{
+                  width:85%;
+ }
+
+#edit-viewercomment{
+          position:absolute;
+          background:#FFFFFF;
+          left:220px;
+          width:740px;
+          height:310px;
+          border:solid 1px rgb(100,110,120);
+          padding-top:40px;
+          padding-left:20px;
+           margin-left:8px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-khtml-border-radius: 10px 10px 10px 10px;
+	border-radius: 10px 10px 10px 10px;
+}
+/* --- line/kigallery/upload --- */
+#folder-in{
+                  margin-left:10px;
+                  width:600px;
+                  min-height:60px;
+                  padding-top:15px;
+                  padding-left:60px;
+                  border:solid 1px #408080;
+                  background:#E0C0A0;
+                  margin-right:200px;
+                  float:right;
+}
+
+#add-image{
+                  margin-left:10px;
+                  width:600px;
+                  height:400px;
+                  margin-top:10px;
+                  padding-top:30px;
+                  padding-left:60px;
+                  border:solid 1px #408080;
+                  background:#E0C0A0;
+                  margin-right:200px;
+                  float:right;
+}
+#add-image div{
+                  margin-top:100px;
+}
+.upload{
+                  font-size:15px;
+                  font-weight:bold;
+}    
+.folder-selects{
+                  margin-left:10px;
+                  line-height:25px;
+                  font-size:17px;
+}
+.multiple-field{
+                    width:350px;
+                    border:solid #666666 1px;
+}
+.watermark{
+                  font-size:15px;
+}
+
+.text-folder{
+                  font-weight:bold;
+                  font-size:15px;
+}
+.to-album{
+                  font-size:20px;
+                  font-weight:bold;
+                  background:#666666;
+                  color:#ffffff;
+                  padding:5px;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	-moz-border-radius: 5px 5px 5px 5px;
+	-khtml-border-radius: 5px 5px 5px 5px;
+	border-radius: 5px 5px 5px 5px;
+	-webkit-box-shadow: 0px 2px 2px #DDDDDD;
+	-moz-box-shadow: 0px 2px 2px #DDDDDD;
+}
+/* --- line/kigallery/delete--- */
+#ajax-success{
+	padding: 10px 10px 10px 33px;
+	margin-bottom: 15px;
+	background: #EAF7D9 url('../image/success.png') 10px center no-repeat;
+	border: 1px solid #BBDF8D;
+	color: #555555;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	-moz-border-radius: 5px 5px 5px 5px;
+	-khtml-border-radius: 5px 5px 5px 5px;
+	border-radius: 5px 5px 5px 5px;
+}
+#gallery_images img{
+                  width:120px;
+                  height:120px;
+}
+.gallery_name{
+                  font-size:18px;
+                  font-weight:bold;
+                  background:silver;
+                  padding:4px 8px 4px 8px;
+}                  
+.gallery{
+                  height:140px;
+}
+ span.buttons{
+                   float:right;
+                   font-size:11px;
+}
+.form{
+                  width:1250px;
+}        
+
+.button{
+                  float:right;
+}  
+/* --- line/kigallery/change ------------ */
+table.image-change{
+                       width:900px;
+                       border:solid 1px #eeeeee;
+                       height:auto;
+                       }
+table.image-change td{
+                       border:solid;
+                       border-color:#eeeeee;
+                       border-width: 0px 0px 1px 0px;
+}
+thead{
+                       
+	background-color: #EFEFEF;
+	padding: 0px 5px;
+}
+/* --- line/kigallery/managefolder -------- */
+#folders{
+                  width:78%;
+                  font-size:15px;
+                  height:auto;
+                  margin-left:14px;
+                  margin-right:14px;
+                  margin-top:20px;
+                  float:right;
+                  background:#efdcba;
+                  border:1px solid #93805f;
+}
+#folders td{
+                  padding:10px;
+                  border:1px solid #93805f;
+	box-shadow: 0px 1px 2px #000;
+          text-align:center;
+}
+#create-folder{
+          position:absolute;
+          background:#FFFFFF;
+          left:220px;
+          width:740px;
+          height:310px;
+          border:solid 1px rgb(100,110,120);
+          padding-top:40px;
+          padding-left:20px;
+           margin-left:8px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-khtml-border-radius: 10px 10px 10px 10px;
+	border-radius: 10px 10px 10px 10px;
+}
+.field-row{
+          padding:6px;
+          margin-bottom:10px;
+}
+.field-row input{
+          margin-left:10px;
+}
+.cf-title{
+                  font-weight:bold;
+                  font-size:17px;
+                  width:95%;
+                  background:#eee;
+                  padding:3px;
+                  margin-bottom:10px;
+          }
+a.kg-button{
+	text-decoration: none;
+	color: #FFF;
+	padding: 5px 15px 5px 15px;
+	background: #003A88;
+           margin-left:8px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-khtml-border-radius: 10px 10px 10px 10px;
+	border-radius: 10px 10px 10px 10px;
+}
+div.folder-button{
+	text-decoration: none;
+	color: #FFF;
+	padding: 5px 10px 5px 5px;
+	background: #003A88;
+           margin-left:8px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-khtml-border-radius: 10px 10px 10px 10px;
+	border-radius: 10px 10px 10px 10px;
+          text-align:center;
+          width:80%;
+}
+.files{
+                  width:17%;          
+}
+.disk{
+                  width:17%;
+}
+.folder{
+                  width:18%;
+                  font-size:17px;
+                  font-weight:bold;
+                  text-align:right;
+}
+.empty-delete{
+                  width:48%;
+                  text-align:right;
+}
+.img-left{
+          width:105px;
+}
+.img-dir{
+          width:200px;
+}
+.img-db{
+          width:400px;
+}
+

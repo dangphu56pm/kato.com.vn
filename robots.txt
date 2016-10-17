@@ -1,0 +1,18 @@
+User-agent: *
+Disallow: /*?sort
+Disallow: /*?search
+Disallow: /*?tag
+Disallow: /*&sort
+Disallow: /*?limit
+Disallow: /*&limit
+Disallow: /*&page=1
+Disallow: /*?route=checkout
+Disallow: /*?route=account
+Allow: /
+
+User-agent: AhrefsBot
+Disallow: /
+User-agent: MJ12bot
+Disallow: /
+User-agent: rogerbot
+Disallow: /

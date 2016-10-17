@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+    <id>VQMOD CORE FOR OPENCART - DO NOT REMOVE</id>
+    <version>1.5.x and 1.6.x</version>
+    <vqmver>2.X</vqmver>
+    <author>osd.vn</author>
+    <file name="admin/model/catalog/category.php" error="log">
+        <operation>
+            <search position="replace"><![CDATA[AS name]]></search>
+            <add><![CDATA[AS name, c.status]]></add>
+        </operation>
+		
+        <operation>
+            <search position="before"><![CDATA[
+				public function getCategory($category_id) {
+			]]></search>
+            <add><![CDATA[
+				public function updateStatus($category_id, $column_name, $value){
+		$this->db->query("UPDATE " . DB_PREFIX . "category SET " . $column_name . " = '" . (int)$value . "' WHERE category_id = '" . (int)$category_id . "'");
+	}
+			]]></add>
+        </operation>
+    </file>
+	
+    <file name="admin/language/*/catalog/category.php">
+        <operation>
+            <search position="before"><![CDATA[?>]]></search>
+            <add><![CDATA[
+				$_['column_status']             = 'Status';
+			]]></add>
+        </operation>
+    </file>
+	
+    <file name="admin/controller/catalog/category.php" error="log">
+        <operation>
+            <search position="after"><![CDATA['name'        => $result['name'],]]></search>
+            <add><![CDATA['status'     => ($result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled')),]]></add>
+        </operation>
+		
+        <operation>
+            <search position="after"><![CDATA[$this->data['column_name']]]></search>
+            <add><![CDATA[
+			$this->data['column_status'] = $this->language->get('column_status');
+			$this->data['token'] = $this->session->data['token'];
+			]]></add>
+        </operation>
+	
+        <operation>
+            <search position="before"><![CDATA[
+				public function insert()
+			]]></search>
+            <add><![CDATA[
+				public function updatestatus() {
+					$this->load->language('catalog/category');
+					$this->load->model('catalog/category');
+					$output='';
+					if(isset($this->request->get['object_id'])){
+						$get_request = explode('-',$this->request->get['object_id']);
+						if(count($get_request)==2){
+							$column_name = $get_request[0];
+							$category_id = $get_request[1];				
+							$result = $this->model_catalog_category->getCategory($category_id);
+							if($result[$column_name]){
+								$this->model_catalog_category->updateStatus($category_id, $column_name, 0);
+							} else {
+								$this->model_catalog_category->updateStatus($category_id, $column_name, 1);
+							}				
+							$result = $this->model_catalog_category->getCategory($category_id);
+							$output = $result[$column_name] ? $this->language->get('text_enabled') : $this->language->get('text_disabled');
+						}
+					}
+					$this->response->setOutput($output);
+				}
+			]]></add>
+        </operation>
+    </file>
+	
+    <file name="admin/view/template/catalog/category_list.tpl">
+        <operation>
+            <search position="after"><![CDATA[<td class="right"><?php echo $column_sort_order; ?></td>]]></search>
+            <add><![CDATA[
+				<td class="right"><?php echo $column_status; ?></td>
+			]]></add>
+        </operation>
+		
+        <operation>
+            <search position="after"><![CDATA[<td class="right"><?php echo $category['sort_order']; ?></td>]]></search>
+            <add><![CDATA[
+				<td class="right"><a class="columnstatus" id="status-<?php echo $category['category_id']; ?>"><?php echo $category['status']; ?></a></td>
+			]]></add>
+        </operation>
+		
+        <operation>
+            <search position="replace"><![CDATA[<td class="center" colspan="4"><?php echo $text_no_results; ?></td>]]></search>
+            <add><![CDATA[
+				<td class="center" colspan="5"><?php echo $text_no_results; ?></td>
+			]]></add>
+        </operation>
+		
+        <operation>
+            <search position="before"><![CDATA[
+				<?php echo $footer; ?>
+			]]></search>
+            <add><![CDATA[
+				<script type="text/javascript"><!--
+					$('.columnstatus').click(function() {
+						var object_id=$(this).attr('id');
+						$.ajax({
+							url: 'index.php?route=catalog/category/updatestatus&token=<?php echo $token; ?>',
+							type: 'get',
+							data: {object_id:object_id},
+							dataType: 'html',
+							success: function(html) {
+								if(html!=''){				
+									$('#'+object_id).html(html);
+								}
+							}
+						});
+					});
+					//--></script> 
+			]]></add>
+        </operation>
+    </file>
+	
+    <file name="admin/model/catalog/product.php" error="log">
+        <operation>
+            <search position="before"><![CDATA[
+				public function getProduct($product_id)
+			]]></search>
+            <add><![CDATA[
+				public function updateStatus($product_id, $column_name, $value){
+		$this->db->query("UPDATE " . DB_PREFIX . "product SET " . $column_name . " = '" . (int)$value . "' WHERE product_id = '" . (int)$product_id . "'");
+	}
+			]]></add>
+        </operation>
+    </file>	
+
+	<file name="admin/controller/catalog/product.php" error="log">
+        <operation>
+            <search position="before"><![CDATA[public function insert() {]]></search>
+            <add><![CDATA[
+				public function updatestatus() {
+					$this->load->language('catalog/product');
+					$this->load->model('catalog/product');
+					$output='';
+					if(isset($this->request->get['object_id'])){
+						$get_request = explode('-',$this->request->get['object_id']);
+						if(count($get_request)==2){
+							$column_name = $get_request[0];
+							$product_id = $get_request[1];				
+							$result = $this->model_catalog_product->getProduct($product_id);
+							if($result[$column_name]){
+								$this->model_catalog_product->updateStatus($product_id, $column_name, 0);
+							} else {
+								$this->model_catalog_product->updateStatus($product_id, $column_name, 1);
+							}				
+							$result = $this->model_catalog_product->getProduct($product_id);
+							$output = $result[$column_name] ? $this->language->get('text_enabled') : $this->language->get('text_disabled');
+						}
+					}
+					$this->response->setOutput($output);
+				}
+			]]></add>
+        </operation>
+    </file>
+	
+    <file name="admin/view/template/catalog/product_list.tpl" error="log">
+        <operation>
+            <search position="replace"><![CDATA[
+				<?php echo $product['status']; ?>
+			]]></search>
+            <add><![CDATA[
+				<a class="columnstatus" id="status-<?php echo $product['product_id']; ?>"><?php echo $product['status']; ?></a>
+			]]></add>
+        </operation>
+        <operation>
+            <search position="before"><![CDATA[
+				<?php echo $footer; ?>
+			]]></search>
+            <add><![CDATA[
+				<script type="text/javascript"><!--
+				$('.columnstatus').click(function() {
+					var object_id=$(this).attr('id');
+					$.ajax({
+						url: 'index.php?route=catalog/product/updatestatus&token=<?php echo $token; ?>',
+						type: 'get',
+						data: {object_id:object_id},
+						dataType: 'html',
+						success: function(html) {
+							if(html!=''){				
+								$('#'+object_id).html(html);
+							}
+						}
+					});
+				});
+				//--></script> 
+			]]></add>
+        </operation>
+    </file>
+	
+    <file name="catalog/model/catalog/product.php">
+        <operation>
+            <search position="replace"><![CDATA[$product_data = $this->cache->get('product.' . (int)$this->config->get('config_language_id') . '.' . (int)$this->config->get('config_store_id') . '.' . (int)$customer_group_id . '.' . $cache);]]></search>
+            <add><![CDATA[$product_data = '';]]></add>
+        </operation>
+    </file>
+    
+	<file name="admin/controller/common/header.php">
+        <operation>
+            <search position="before"><![CDATA[$this->data['heading_title']]]></search>
+            <add><![CDATA[$this->language->load('common/to_header');]]></add>
+        </operation>
+        <operation>
+            <search position="after"><![CDATA[$this->language->get('text_setting');]]></search>
+            <add><![CDATA[$this->data['text_filemanager'] = $this->language->get('text_filemanager');]]></add>
+        </operation>
+        <operation>  
+            <search position="before"><![CDATA[$this->data['setting']]]></search>
+            <add><![CDATA[$this->data['filemanager'] = $this->url->link('common/filemanager', 'token=' . $this->session->data['token'], 'SSL');]]></add>
+        </operation>
+    </file>
+    
+	<file name="admin/view/template/common/header.tpl">
+        <operation>
+            <search position="after"><![CDATA[$text_information; ?></a></li>]]></search>
+            <add><![CDATA[<li><a href="<?php echo $filemanager; ?>"><?php echo $text_filemanager; ?></a></li>]]></add>
+        </operation>
+    </file>	
+    
+	<file name="admin/controller/common/filemanager.php">
+        <operation>
+            <search position="after"><![CDATA['common/filemanager.tpl';]]></search>
+            <add><![CDATA[$this->load->language('common/header');
+		$this->data['text_dashboard'] = $this->language->get('text_dashboard');
+                                              $this->data['home'] = $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL');
+		$this->children = array(
+			'common/header',
+			'common/footer'
+		);]]></add>
+        </operation>
+    </file>
+	
+    <file name="admin/view/template/common/filemanager.tpl">
+        <operation>
+            <search position="replace"><![CDATA[<!DOCTYPE html>]]></search>
+            <add><![CDATA[<?php echo $header;?>]]></add>
+        </operation>
+        <operation>
+            <search position="replace"><![CDATA[<head>]]></search>
+            <add><![CDATA[<head style="display:none;">]]></add>
+        </operation>
+        <operation>
+            <search position="after"><![CDATA[</html>]]></search>
+            <add><![CDATA[<?php echo $footer;?>]]></add>
+        </operation>
+        <operation>
+            <search position="replace"><![CDATA[filemanager/folder.png]]></search>
+            <add><![CDATA[selected.png]]></add>
+        </operation>
+        <operation>
+            <search position="replace"><![CDATA[filemanager/edit-delete.png]]></search>
+            <add><![CDATA[selected.png]]></add>
+        </operation>
+        <operation>
+            <search position="replace"><![CDATA[filemanager/edit-cut.png]]></search>
+            <add><![CDATA[selected.png]]></add>
+        </operation>
+        <operation>
+            <search position="replace"><![CDATA[filemanager/edit-copy.png]]></search>
+            <add><![CDATA[selected.png]]></add>
+        </operation>
+        <operation>
+            <search position="replace"><![CDATA[filemanager/edit-rename.png]]></search>
+            <add><![CDATA[selected.png]]></add>
+        </operation>
+        <operation>
+            <search position="replace"><![CDATA[filemanager/upload.png]]></search>
+            <add><![CDATA[selected.png]]></add>
+        </operation>
+        <operation>
+            <search position="replace"><![CDATA[filemanager/refresh.png]]></search>
+            <add><![CDATA[selected.png]]></add>
+        </operation>
+        <operation>
+            <search position="replace"><![CDATA[height: 320px;]]></search>
+            <add><![CDATA[height: 640px;]]></add>
+        </operation>
+        <operation>
+            <search position="replace"><![CDATA[#container {]]></search>
+            <add><![CDATA[#container-filemanager {
+                                                                     margin-top:3px;]]></add>
+        </operation>
+        <operation>
+            <search position="replace"><![CDATA[#menu {]]></search>
+            <add><![CDATA[#menu-filemanager {
+                                                                     height:30px;
+                                                                     background:#dddddd;
+                                                                     padding-top:6px;]]></add>
+        </operation>
+        <operation>
+            <search position="replace"><![CDATA[#column-right]]></search>
+            <add><![CDATA[#column-right-filemanager]]></add>
+        </operation>
+        <operation>
+            <search position="replace"><![CDATA[#column-left]]></search>
+            <add><![CDATA[#column-left-filemanager]]></add>
+        </operation>
+        <operation>
+            <search position="replace"><![CDATA[<div id="container">]]></search>
+            <add><![CDATA[<div id="container-filemanager">
+                                              <div class="dashboard"><a class="button" href="<?php echo $home;?>"><?php echo $text_dashboard;?></a></div>]]></add>
+        </operation>
+        <operation>
+            <search position="replace"><![CDATA[<div id="menu">]]></search>
+            <add><![CDATA[<div id="menu-filemanager">]]></add>
+        </operation>
+        <operation>
+            <search position="replace"><![CDATA[<div id="column-left">]]></search>
+            <add><![CDATA[<div id="column-left-filemanager">]]></add>
+        </operation>
+        <operation>
+            <search position="replace"><![CDATA[<div id="column-right">]]></search>
+            <add><![CDATA[<div id="column-right-filemanager">]]></add>
+        </operation>
+        <operation>
+            <search position="before"><![CDATA[#dialog {]]></search>
+            <add><![CDATA[a.button:hover{
+                                                                     background:#000000;
+                                                                     }]]></add>
+        </operation>
+    </file>
+    
+	<file name="admin/view/template/module/featured.tpl">
+        <operation>
+            <search position="before"><![CDATA[<input type="hidden" name="featured_product"]]></search>
+            <add><![CDATA[
+			<a href="#" class="m_mover" onclick="moveMarkedItemsUp(); return false;"><span>Move Up</span></a>&nbsp;
+			<a href="#" class="m_mover" onclick="moveMarkedItemsDown(); return false;"><span>Move Down</span></a>]]></add>
+        </operation>
+        <operation>
+            <search position="before" index="1"><![CDATA[//--></script> ]]></search>
+            <add><![CDATA[
+			$('#featured-product div').live('click', function() {
+				$this = $(this);
+				
+				if($this.hasClass('marked'))
+					$(this).removeClass('marked');
+				else
+					$(this).addClass('marked');
+			});
+
+			function moveMarkedItemsUp() {
+				$('.marked').each(function(index) {
+					$this = $(this);
+					$this.prev().before($this);
+				});
+				
+				reColorThenReMap();
+			}
+
+			jQuery.fn.reverse = function() {
+				return this.pushStack(this.get().reverse(), arguments);
+			};
+
+			function moveMarkedItemsDown() {
+				$('.marked').reverse().each(function(index) {
+					$this = $(this);
+					$this.next().after($this);
+				});
+				
+				reColorThenReMap();
+			}
+
+			function reColorThenReMap()
+			{
+				$('#featured-product div').removeClass('odd').removeClass('even');
+				$('#featured-product div:odd').addClass('odd');
+				$('#featured-product div:even').addClass('even');
+
+				data = $.map($('#featured-product input'), function(element){
+					return $(element).attr('value');
+				});
+								
+				$('input[name=\'featured_product\']').attr('value', data.join());	
+			}]]></add>
+        </operation>
+        <operation>
+            <search position="after" index="1"><![CDATA[//--></script>]]></search>
+            <add><![CDATA[
+			<style>
+				.marked {
+					border-left: 5px solid orange;
+				}
+
+				.scrollbox
+				{
+					height: 200px;
+				}
+				div#featured-product {
+					float: left;
+				}
+				a.m_mover {
+					float: left;
+					margin-left: 15px;
+					text-decoration: none;
+					text-align: center;
+					outline: none;
+				}
+				a.m_mover span {
+					display:block;
+					margin: 5px auto;
+					color:#666;
+				}
+				a.m_mover span:before {
+					content: '';
+					width: 22px;
+					height: 27px;
+					display: block;
+					margin: 0 auto;
+					background: url(view/image/mover_up_bg.png) left top no-repeat;
+				}
+				a + a.m_mover span:before {
+					background-image: url(view/image/mover_down_bg.png);
+				}
+				a.m_mover:hover span {color: #333;} 
+				a.m_mover:hover span:before {background-position: center top}
+				a.m_mover:active span{color: #5c9bc8;}
+				a.m_mover:active span:before {background-position: right top}
+			</style>]]></add>
+        </operation>
+    </file>
+    
+	<file name="admin/model/catalog/news.php" error="log">
+        <operation>
+            <search position="before"><![CDATA[public function getNew($news_id) {]]></search>
+            <add><![CDATA[
+				public function updateStatus($news_id, $column_name, $value){
+		$this->db->query("UPDATE " . DB_PREFIX . "news SET " . $column_name . " = '" . (int)$value . "' WHERE news_id = '" . (int)$news_id . "'");
+	}
+			]]></add>
+        </operation>
+    </file>	
+
+	<file name="admin/controller/catalog/news.php" error="log">
+        <operation>
+            <search position="before"><![CDATA[public function insert()]]></search>
+            <add><![CDATA[
+				public function updatestatus() {
+					$this->load->language('catalog/news');
+					$this->load->model('catalog/news');
+					$output='';
+					if(isset($this->request->get['object_id'])){
+						$get_request = explode('-',$this->request->get['object_id']);
+						if(count($get_request)==2){
+							$column_name = $get_request[0];
+							$news_id = $get_request[1];				
+							$result = $this->model_catalog_news->getNew($news_id);
+							if($result[$column_name]){
+								$this->model_catalog_news->updateStatus($news_id, $column_name, 0);
+							} else {
+								$this->model_catalog_news->updateStatus($news_id, $column_name, 1);
+							}				
+							$result = $this->model_catalog_news->getNew($news_id);
+							$output = $result[$column_name] ? $this->language->get('text_enabled') : $this->language->get('text_disabled');
+						}
+					}
+					$this->response->setOutput($output);
+				}
+			]]></add>
+        </operation>
+    </file>
+	
+    <file name="admin/view/template/catalog/news_list.tpl" error="log">
+        <operation>
+            <search position="replace"><![CDATA[<?php echo $news_item['status']; ?>]]></search>
+            <add><![CDATA[
+				<a class="columnstatus" id="status-<?php echo $news_item['news_id']; ?>"><?php echo $news_item['status']; ?></a>
+			]]></add>
+        </operation>
+        <operation>
+            <search position="before"><![CDATA[
+				<?php echo $footer; ?>
+			]]></search>
+            <add><![CDATA[
+				<script type="text/javascript"><!--
+				$('.columnstatus').click(function() {
+					var object_id=$(this).attr('id');
+					$.ajax({
+						url: 'index.php?route=catalog/news/updatestatus&token=<?php echo $token; ?>',
+						type: 'get',
+						data: {object_id:object_id},
+						dataType: 'html',
+						success: function(html) {
+							if(html!=''){				
+								$('#'+object_id).html(html);
+							}
+						}
+					});
+				});
+				//--></script> 
+			]]></add>
+        </operation>
+    </file>
+	
+    <file name="catalog/model/catalog/news.php">
+        <operation>
+            <search position="replace"><![CDATA[$news_data = $this->cache->get('news.' . (int)$this->config->get('config_language_id') . '.' . (int)$this->config->get('config_store_id') . '.' . (int)$customer_group_id . '.' . $cache);]]></search>
+            <add><![CDATA[$news_data = '';]]></add>
+        </operation>
+    </file>
+
+</modification>
